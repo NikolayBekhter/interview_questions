@@ -8,9 +8,11 @@ public class SessionFactoryUtils {
     private SessionFactory factory;
 
     public void init() {
-        factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .buildSessionFactory();
+        if (factory == null) {
+            factory = new Configuration()
+                    .configure("hibernate.cfg.xml")
+                    .buildSessionFactory();
+        }
     }
 
     public Session getSession() {
